@@ -1,0 +1,4 @@
+CJ,10
+OG LOC,10
+Sweet,7
+Tenpenny,4
