@@ -1,4 +1,3 @@
-CJ,10
-OG LOC,10
-Sweet,7
-Tenpenny,4
+OG_LOC,8
+CJ,6
+Sweet,0

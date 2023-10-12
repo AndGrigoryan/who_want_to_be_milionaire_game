@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from random import randrange, shuffle
+import argparse
 
 
 def select_random_questions_id(questions, question_cnt):
@@ -139,14 +140,21 @@ def write_player_score(path, player_name, score):
 
 
 def main():
-    questions_path = "questions_capitals.txt"
+    parser = argparse.ArgumentParser(description="Get file for questions.")
+    parser.add_argument("questions_path", type=str, help="The path to the questions path.")
+    parser.add_argument("top_players_path", type=str, help="The path to the top players path.")
+
+    args = parser.parse_args()
+
+    questions_path = args.questions_path
+
     questions_ls = get_questions_ls(questions_path)
     mx_questions = 10
     
-    path = "top_players.txt"
-    create_file_if_not_exist(path)
+    top_players_path = args.top_players_path
+    create_file_if_not_exist(top_players_path)
 
-    nicks = get_player_list(path)
+    nicks = get_player_list(top_players_path)
 
 
     while True:
@@ -162,8 +170,10 @@ def main():
 
     score = play(indexes_list, questions_dict, mx_questions)
 
-    write_player_score(path, player_name, score)
+    write_player_score(top_players_path, player_name, score)
+
 
 if __name__ == '__main__':
     main()
+
 
